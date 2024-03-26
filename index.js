@@ -1,12 +1,12 @@
 const express = require("express");
 const app = express();
-const workloads = require("./controllers/workloads");
+const users = require("./controllers/Users");
 app.use(express.json());
 
-app.get("/workloads", (req, res) => {
-  console.log("GET /workloads");
-  workloads
-    .getWorkloads()
+app.get("/Users", (req, res) => {
+  console.log("GET /Users");
+  users
+    .getUsers()
     .then((result) => {
       res.status(200);
       res.send(result);
