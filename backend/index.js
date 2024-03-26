@@ -3,6 +3,15 @@ const app = express();
 const users = require("./controllers/Users");
 app.use(express.json());
 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 app.get("/Users", (req, res) => {
   console.log("GET /Users");
   users
@@ -33,6 +42,6 @@ app.get("/Users/:id", (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+app.listen(3001, () => {
+  console.log("Server is running on port 3001");
 });
