@@ -8,7 +8,7 @@ export const ProfileCards = () => {
 
   const getData = async () => {
     const response = await axios.get("http://localhost:3001/Users");
-    setCardsData(response.data[0]);
+    setCardsData(response.data);
   };
 
   React.useEffect(() => {
@@ -16,6 +16,10 @@ export const ProfileCards = () => {
   }, []);
 
   const buildCards = React.useCallback(() => {
+    console.log(cardsData);
+    if (!cardsData) {
+      return null;
+    }
     return cardsData.map((item: any) => {
       return (
         <StackItem>

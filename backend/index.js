@@ -1,47 +1,56 @@
-const express = require("express");
+import cors from "cors";
+import express from "express";
+import {
+  createUser,
+  deleteUser,
+  getUser,
+  getUsers,
+  updateUser
+} from "./controllers/UserController.js";
+import sequelize from "./dbconfig.js";
 const app = express();
-const users = require("./controllers/Users");
-app.use(express.json());
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+app.use(express.json());
+app.use(cors({ origin: "http://localhost:3000" }));
+
+sequelize
+  .sync({ force: false })
+  .then(() => {
+    console.log("Database is connected");
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+const port = 3001;
 
 app.get("/Users", (req, res) => {
   console.log("GET /Users");
-  users
-    .getUsers()
-    .then((result) => {
-      res.status(200);
-      res.send(result);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500);
-      res.send(err);
-    });
+  getUsers(req, res);
 });
 
 app.get("/Users/:id", (req, res) => {
   console.log(`GET /Users/${req.params.id}`);
-  users
-    .getUser(req.params.id)
-    .then((result) => {
-      res.status(200);
-      res.send(result);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500);
-      res.send(err);
-    });
+  getUser(req, res);
 });
 
-app.listen(3001, () => {
-  console.log("Server is running on port 3001");
+app.post("/User", (req, res) => {
+  console.log("POST /User");
+  console.log(req.body);
+  createUser(req, res);
+});
+
+app.put("/User/:id", (req, res) => {
+  console.log(`PUT /User/${req.params.id}`);
+  console.log(req.body);
+  updateUser(req, res);
+});
+
+app.delete("/User/:id", (req, res) => {
+  console.log(`DELETE /User/${req.params.id}`);
+  deleteUser(req, res);
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
