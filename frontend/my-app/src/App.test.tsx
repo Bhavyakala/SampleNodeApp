@@ -1,6 +1,5 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { App } from './App';
+import { App } from './Components/App';
 
 it('renders "Welcome to Your Fluent UI App"', () => {
   render(<App />);

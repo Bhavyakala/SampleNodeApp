@@ -1,0 +1,167 @@
+{
+    "suggestions": [
+        {
+            "placePrediction": {
+                "place": "places/ChIJeUB84_Ab2YgR0TeHFh2fLlc",
+                "placeId": "ChIJeUB84_Ab2YgR0TeHFh2fLlc",
+                "text": {
+                    "text": "9539 Parkview Avenue, Boca Raton, FL, USA",
+                    "matches": [
+                        {
+                            "endOffset": 4
+                        },
+                        {
+                            "startOffset": 5,
+                            "endOffset": 13
+                        }
+                    ]
+                },
+                "structuredFormat": {
+                    "mainText": {
+                        "text": "9539 Parkview Avenue",
+                        "matches": [
+                            {
+                                "endOffset": 4
+                            },
+                            {
+                                "startOffset": 5,
+                                "endOffset": 13
+                            }
+                        ]
+                    },
+                    "secondaryText": {
+                        "text": "Boca Raton, FL, USA"
+                    }
+                },
+                "types": [
+                    "premise",
+                    "geocode"
+                ]
+            }
+        },
+        {
+            "placePrediction": {
+                "place": "places/Eic5NTM5IFBhcmt2aWV3IExhbmUsIEFscGhhcmV0dGEsIEdBLCBVU0EiMRIvChQKEgmpm8eAq5_1iBFN4LdDEQokWBDDSioUChIJqxK-YKyf9YgRzpXGoA8w_GA",
+                "placeId": "Eic5NTM5IFBhcmt2aWV3IExhbmUsIEFscGhhcmV0dGEsIEdBLCBVU0EiMRIvChQKEgmpm8eAq5_1iBFN4LdDEQokWBDDSioUChIJqxK-YKyf9YgRzpXGoA8w_GA",
+                "text": {
+                    "text": "9539 Parkview Lane, Alpharetta, GA, USA",
+                    "matches": [
+                        {
+                            "endOffset": 13
+                        }
+                    ]
+                },
+                "structuredFormat": {
+                    "mainText": {
+                        "text": "9539 Parkview Lane",
+                        "matches": [
+                            {
+                                "endOffset": 13
+                            }
+                        ]
+                    },
+                    "secondaryText": {
+                        "text": "Alpharetta, GA, USA"
+                    }
+                },
+                "types": [
+                    "street_address",
+                    "geocode"
+                ]
+            }
+        },
+        {
+            "placePrediction": {
+                "place": "places/Eig5NTM5IFBhcmt2aWV3IEF2ZW51ZSwgQ2xldmVsYW5kLCBPSCwgVVNBIjESLwoUChIJrY_smmn7MIgRCt3eNgUG6SQQw0oqFAoSCQFZttRm-zCIEUKXN2aKrp-A",
+                "placeId": "Eig5NTM5IFBhcmt2aWV3IEF2ZW51ZSwgQ2xldmVsYW5kLCBPSCwgVVNBIjESLwoUChIJrY_smmn7MIgRCt3eNgUG6SQQw0oqFAoSCQFZttRm-zCIEUKXN2aKrp-A",
+                "text": {
+                    "text": "9539 Parkview Avenue, Cleveland, OH, USA",
+                    "matches": [
+                        {
+                            "endOffset": 13
+                        }
+                    ]
+                },
+                "structuredFormat": {
+                    "mainText": {
+                        "text": "9539 Parkview Avenue",
+                        "matches": [
+                            {
+                                "endOffset": 13
+                            }
+                        ]
+                    },
+                    "secondaryText": {
+                        "text": "Cleveland, OH, USA"
+                    }
+                },
+                "types": [
+                    "street_address",
+                    "geocode"
+                ]
+            }
+        },
+        {
+            "placePrediction": {
+                "place": "places/Eic5NTM5IFBhcmt2aWV3IERyaXZlLCBCcm9va2luZ3MsIE9SLCBVU0EiMRIvChQKEgn7LFqWHKLaVBGhN-TJpgLfyBDDSioUChIJY1inFhmi2lQRAqoOTH0Y4n0",
+                "placeId": "Eic5NTM5IFBhcmt2aWV3IERyaXZlLCBCcm9va2luZ3MsIE9SLCBVU0EiMRIvChQKEgn7LFqWHKLaVBGhN-TJpgLfyBDDSioUChIJY1inFhmi2lQRAqoOTH0Y4n0",
+                "text": {
+                    "text": "9539 Parkview Drive, Brookings, OR, USA",
+                    "matches": [
+                        {
+                            "endOffset": 13
+                        }
+                    ]
+                },
+                "structuredFormat": {
+                    "mainText": {
+                        "text": "9539 Parkview Drive",
+                        "matches": [
+                            {
+                                "endOffset": 13
+                            }
+                        ]
+                    },
+                    "secondaryText": {
+                        "text": "Brookings, OR, USA"
+                    }
+                },
+                "types": [
+                    "street_address",
+                    "geocode"
+                ]
+            }
+        },
+        {
+            "placePrediction": {
+                "place": "places/EiQ5NTM5IFBhcmt2aWV3IFN0cmVldCwgSGVtZXQsIENBLCBVU0EiMRIvChQKEgmZ_uQEMG_bgBEPF_tZwrR13BDDSioUChIJF0RuEjBv24AR6kqRJmoMvn4",
+                "placeId": "EiQ5NTM5IFBhcmt2aWV3IFN0cmVldCwgSGVtZXQsIENBLCBVU0EiMRIvChQKEgmZ_uQEMG_bgBEPF_tZwrR13BDDSioUChIJF0RuEjBv24AR6kqRJmoMvn4",
+                "text": {
+                    "text": "9539 Parkview Street, Hemet, CA, USA",
+                    "matches": [
+                        {
+                            "endOffset": 13
+                        }
+                    ]
+                },
+                "structuredFormat": {
+                    "mainText": {
+                        "text": "9539 Parkview Street",
+                        "matches": [
+                            {
+                                "endOffset": 13
+                            }
+                        ]
+                    },
+                    "secondaryText": {
+                        "text": "Hemet, CA, USA"
+                    }
+                },
+                "types": [
+                    "street_address",
+                    "geocode"
+                ]
+            }
+        }
+    ]
+}
