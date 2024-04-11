@@ -1,8 +1,6 @@
 import { DefaultButton, Stack, TextField } from "@fluentui/react";
 import { Address } from "../Models/Address";
 export const AddressForm = (autocompleteValues: Address) => {
-    console.log(autocompleteValues);
-
     // Default values for the form fields
     const defaultValues = {
         addressLine: autocompleteValues.address || "",
@@ -23,7 +21,6 @@ export const AddressForm = (autocompleteValues: Address) => {
                 text="Submit"
                 onClick={() => {
                     console.log("Submitted");
-                    console.log(defaultValues);
                 }}
             />
         </Stack>

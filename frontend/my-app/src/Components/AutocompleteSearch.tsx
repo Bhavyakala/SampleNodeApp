@@ -30,19 +30,12 @@ export const AutocompleteSearch: React.FunctionComponent = () => {
                         curAdd.address = `${component.long_name} ${curAdd.address}`;
                         break;
                     }
-
                     case "route": {
                         curAdd.address += component.long_name;
                         break;
                     }
-
                     case "postal_code": {
                         curAdd.postcode = `${component.long_name}${curAdd.postcode}`;
-                        break;
-                    }
-
-                    case "postal_code_suffix": {
-                        curAdd.postcode = `${curAdd.postcode}-${component.long_name}`;
                         break;
                     }
                     case "locality":
@@ -58,7 +51,6 @@ export const AutocompleteSearch: React.FunctionComponent = () => {
                 }
             });
             setAddress(curAdd);
-            console.log(curAdd);
         }
     };
 
