@@ -3,7 +3,6 @@ import React from "react";
 import { ProfileCards } from "../ProfileCards";
 import { AutocompleteSearch } from "./AutocompleteSearch";
 import axios from "axios";
-import { zohoClientId } from "../utils/Constants";
 
 const stackTokens: IStackTokens = { childrenGap: 15 };
 const stackStyles: Partial<IStackStyles> = {
@@ -70,15 +69,40 @@ export const App: React.FunctionComponent = () => {
                                     });
                                 setIsAuthCode(false);
                                 return;
+                            } else {
+                                let url =
+                                    "https://accounts.zoho.com/oauth/v2/auth?client_id=1000.A1EC3Q7JCFQ73T9Q3LGBMRURXGR25Y&response_type=code&redirect_uri=http://localhost:3001/&scope=ZohoBooks.invoices.CREATE,ZohoBooks.invoices.READ,ZohoBooks.invoices.UPDATE,ZohoBooks.invoices.DELETE,ZohoBooks.contacts.CREATE,ZohoBooks.contacts.READ,ZohoInvoice.contacts.READ,ZohoInvoice.contacts.CREATE,ZohoInvoice.invoices.CREATE";
+                                window.location.href = url;
                             }
-                            let url =
-                                "https://accounts.zoho.com/oauth/v2/auth?client_id=" +
-                                +zohoClientId +
-                                "&response_type=code&redirect_uri=http://localhost:3001/&scope=ZohoBooks.invoices.CREATE,ZohoBooks.invoices.READ,ZohoBooks.invoices.UPDATE,ZohoBooks.invoices.DELETE,ZohoBooks.contacts.CREATE,ZohoBooks.contacts.READ,ZohoInvoice.contacts.READ,ZohoInvoice.contacts.CREATE,ZohoInvoice.invoices.CREATE";
-                            window.location.href = url;
                         }}
                     >
-                        Zoho enter customer
+                        Create Invoice
+                    </PrimaryButton>
+                </StackItem>
+                <StackItem>
+                    <PrimaryButton
+                        onClick={async () => {
+                            if (isAuthCode && authCode) {
+                                await axios
+                                    .post("http://localhost:3000/createCustomer", {
+                                        authCode: authCode,
+                                    })
+                                    .then((res) => {
+                                        console.log(res);
+                                    })
+                                    .catch((error) => {
+                                        console.log(error);
+                                    });
+                                setIsAuthCode(false);
+                                return;
+                            } else {
+                                let url =
+                                    "https://accounts.zoho.com/oauth/v2/auth?client_id=1000.A1EC3Q7JCFQ73T9Q3LGBMRURXGR25Y&response_type=code&redirect_uri=http://localhost:3001/&scope=ZohoBooks.invoices.CREATE,ZohoBooks.invoices.READ,ZohoBooks.invoices.UPDATE,ZohoBooks.invoices.DELETE,ZohoBooks.contacts.CREATE,ZohoBooks.contacts.READ,ZohoInvoice.contacts.READ,ZohoInvoice.contacts.CREATE,ZohoInvoice.invoices.CREATE";
+                                window.location.href = url;
+                            }
+                        }}
+                    >
+                        Create Customer
                     </PrimaryButton>
                 </StackItem>
             </Stack>

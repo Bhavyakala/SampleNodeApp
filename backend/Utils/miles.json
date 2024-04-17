@@ -1,0 +1,83 @@
+{
+    "status": "success",
+    "message": "Ok",
+    "statusCode": 200,
+    "data": [
+        {
+            "id": 405076,
+            "msgId": 2,
+            "transactionStatus": "Available",
+            "transactionNumber": 2,
+            "vehicle_id": 998100311,
+            "mroId": "6672",
+            "vehicleInfo": {
+                "make": "Tesla",
+                "model": "Model Y",
+                "year": 2021,
+                "vin": "5YJYGDEE9MF278834",
+                "tag": "BHAV_SA"
+            },
+            "startDatePeriod": "2024-03-31T00:00:00.000Z",
+            "endDatePeriod": "2024-03-31T23:59:59.999Z",
+            "rule": {
+                "ruleId": 12,
+                "name": "Florida"
+            },
+            "subRule": {
+                "subRuleId": 1,
+                "name": ""
+            },
+            "totalNetRucTransactionBalance": "0.03",
+            "totalRoadUsageCharge": "0.03",
+            "totalFuelTaxCredit": "0.00",
+            "totalFuelUsage": "0.00",
+            "miles": "1.06",
+            "rucRateConfigId": 7,
+            "usedRates": {
+                "rucRate": 0.03,
+                "fuelTaxRate": 0.38,
+                "fuelFederalTaxRate": 0.184
+            },
+            "created_at": "2024-04-01T01:30:32.611Z",
+            "displayDateLabel": "03-31-2024"
+        },
+        {
+            "id": 405049,
+            "msgId": 1,
+            "transactionStatus": "Available",
+            "transactionNumber": 1,
+            "vehicle_id": 998100311,
+            "mroId": "6672",
+            "vehicleInfo": {
+                "make": "Tesla",
+                "model": "Model Y",
+                "year": 2021,
+                "vin": "5YJYGDEE9MF278834",
+                "tag": "BHAV_SA"
+            },
+            "startDatePeriod": "2024-03-30T00:00:00.000Z",
+            "endDatePeriod": "2024-03-30T23:59:59.999Z",
+            "rule": {
+                "ruleId": 12,
+                "name": "Florida"
+            },
+            "subRule": {
+                "subRuleId": 1,
+                "name": ""
+            },
+            "totalNetRucTransactionBalance": "0.46",
+            "totalRoadUsageCharge": "0.46",
+            "totalFuelTaxCredit": "0.00",
+            "totalFuelUsage": "0.00",
+            "miles": "15.38",
+            "rucRateConfigId": 7,
+            "usedRates": {
+                "rucRate": 0.03,
+                "fuelTaxRate": 0.38,
+                "fuelFederalTaxRate": 0.184
+            },
+            "created_at": "2024-03-31T01:30:06.459Z",
+            "displayDateLabel": "03-30-2024"
+        }
+    ]
+}
