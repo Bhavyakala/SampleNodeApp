@@ -130,3 +130,25 @@ export const markAsSentInvoice = async (invoice_id, organization_id, access_toke
             console.log(error);
         });
 };
+
+export const getAccountReceivables = async (account_id, organization_id, access_token) => {
+    let config = {
+        method: "get",
+        maxBodyLength: Infinity,
+        url: `https://www.zohoapis.com/books/v3/chartofaccounts/${account_id}?organization_id=${organization_id}`,
+        headers: {
+            Authorization: "Bearer " + access_token,
+            "content-type": "application/json",
+        },
+    };
+
+    return await axios
+        .request(config)
+        .then((response) => {
+            console.log(JSON.stringify(response.data));
+            return response.data;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}

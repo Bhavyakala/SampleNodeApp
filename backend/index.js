@@ -1,7 +1,7 @@
 import cors from "cors";
 import express from "express";
 import milesData from "./Utils/miles.json" assert { type: "json" };
-import { createCustomer, createInvoice, getAccessToken, getCustomerByName, markAsSentInvoice } from "./controllers/zohoController.js";
+import { createCustomer, createInvoice, getAccessToken, getAccountReceivables, getCustomerByName, markAsSentInvoice } from "./controllers/zohoController.js";
 const app = express();
 
 app.use(express.json());
@@ -59,6 +59,15 @@ app.post("/createInvoice", async (req, res) => {
     } else {
         res.send("customer does not exist");
     }
+});
+
+app.get("/getAccountRecievables", async (req, res) => {
+    let authCode = req.query.authCode;
+    let account_id = req.query.account_id;
+    let access_token = await getAccessToken(authCode, authRedirectUriBase);
+    await getAccountReceivables(account_id, "837904315", access_token).then((response)=> {
+        res.send(response);
+    });
 });
 
 app.listen(port, () => {

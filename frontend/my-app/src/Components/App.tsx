@@ -1,4 +1,4 @@
-import { IStackStyles, IStackTokens, PrimaryButton, Stack, StackItem, TextField } from "@fluentui/react";
+import { DetailsList, IStackStyles, IStackTokens, PrimaryButton, Stack, StackItem, TextField } from "@fluentui/react";
 import React from "react";
 import { ProfileCards } from "../ProfileCards";
 import { AutocompleteSearch } from "./AutocompleteSearch";
@@ -18,6 +18,7 @@ export const App: React.FunctionComponent = () => {
     const [name, setName] = React.useState<string | undefined>();
     const [isAuthCode, setIsAuthCode] = React.useState<boolean>(false);
     const [authCode, setAuthCode] = React.useState<string>();
+    const [arData, setarData] = React.useState<[]>();
 
     React.useEffect(() => {
         const authCodeRegex = /code=([^&]+)/;
@@ -71,7 +72,7 @@ export const App: React.FunctionComponent = () => {
                                 return;
                             } else {
                                 let url =
-                                    "https://accounts.zoho.com/oauth/v2/auth?client_id=1000.A1EC3Q7JCFQ73T9Q3LGBMRURXGR25Y&response_type=code&redirect_uri=http://localhost:3001/&scope=ZohoBooks.invoices.CREATE,ZohoBooks.invoices.READ,ZohoBooks.invoices.UPDATE,ZohoBooks.invoices.DELETE,ZohoBooks.contacts.CREATE,ZohoBooks.contacts.READ,ZohoInvoice.contacts.READ,ZohoInvoice.contacts.CREATE,ZohoInvoice.invoices.CREATE";
+                                    "https://accounts.zoho.com/oauth/v2/auth?client_id=1000.A1EC3Q7JCFQ73T9Q3LGBMRURXGR25Y&response_type=code&redirect_uri=http://localhost:3001/&scope=ZohoBooks.invoices.CREATE,ZohoBooks.invoices.READ,ZohoBooks.invoices.UPDATE,ZohoBooks.invoices.DELETE,ZohoBooks.contacts.CREATE,ZohoBooks.contacts.READ,ZohoInvoice.contacts.READ,ZohoInvoice.contacts.CREATE,ZohoInvoice.invoices.CREATE,ZohoBooks.accountants.READ";
                                 window.location.href = url;
                             }
                         }}
@@ -97,13 +98,76 @@ export const App: React.FunctionComponent = () => {
                                 return;
                             } else {
                                 let url =
-                                    "https://accounts.zoho.com/oauth/v2/auth?client_id=1000.A1EC3Q7JCFQ73T9Q3LGBMRURXGR25Y&response_type=code&redirect_uri=http://localhost:3001/&scope=ZohoBooks.invoices.CREATE,ZohoBooks.invoices.READ,ZohoBooks.invoices.UPDATE,ZohoBooks.invoices.DELETE,ZohoBooks.contacts.CREATE,ZohoBooks.contacts.READ,ZohoInvoice.contacts.READ,ZohoInvoice.contacts.CREATE,ZohoInvoice.invoices.CREATE";
+                                    "https://accounts.zoho.com/oauth/v2/auth?client_id=1000.A1EC3Q7JCFQ73T9Q3LGBMRURXGR25Y&response_type=code&redirect_uri=http://localhost:3001/&scope=ZohoBooks.invoices.CREATE,ZohoBooks.invoices.READ,ZohoBooks.invoices.UPDATE,ZohoBooks.invoices.DELETE,ZohoBooks.contacts.CREATE,ZohoBooks.contacts.READ,ZohoInvoice.contacts.READ,ZohoInvoice.contacts.CREATE,ZohoInvoice.invoices.CREATE,ZohoBooks.accountants.READ";
                                 window.location.href = url;
                             }
                         }}
                     >
                         Create Customer
                     </PrimaryButton>
+                </StackItem>
+                <StackItem>
+                    <PrimaryButton
+                        onClick={async () => {
+                            if (isAuthCode && authCode) {
+                                await axios
+                                    .get("http://localhost:3000/getAccountRecievables", {
+                                        params: {
+                                            account_id: "4692903000000000364",
+                                            authCode: authCode,
+                                        },
+                                    })
+                                    .then((res) => {
+                                        console.log(res.data);
+                                        setarData(res.data?.chart_of_account?.transactions);
+                                    })
+                                    .catch((error) => {
+                                        console.log(error);
+                                    });
+                                setIsAuthCode(false);
+                                return;
+                            } else {
+                                let url =
+                                    "https://accounts.zoho.com/oauth/v2/auth?client_id=1000.A1EC3Q7JCFQ73T9Q3LGBMRURXGR25Y&response_type=code&redirect_uri=http://localhost:3001/&scope=ZohoBooks.invoices.CREATE,ZohoBooks.invoices.READ,ZohoBooks.invoices.UPDATE,ZohoBooks.invoices.DELETE,ZohoBooks.contacts.CREATE,ZohoBooks.contacts.READ,ZohoInvoice.contacts.READ,ZohoInvoice.contacts.CREATE,ZohoInvoice.invoices.CREATE,ZohoBooks.accountants.READ";
+                                window.location.href = url;
+                            }
+                        }}
+                    >
+                        Get Account receivables
+                    </PrimaryButton>
+                </StackItem>
+                <StackItem>
+                    {arData && (
+                        <DetailsList
+                            items={arData as any}
+                            columns={[
+                                {
+                                    key: "id",
+                                    name: "Name",
+                                    fieldName: "customer_name",
+                                    minWidth: 0,
+                                },
+                                {
+                                    key: "id",
+                                    name: "Date",
+                                    fieldName: "date_formatted",
+                                    minWidth: 0,
+                                },
+                                {
+                                    key: "id",
+                                    name: "debit",
+                                    fieldName: "debit_formatted",
+                                    minWidth: 0,
+                                },
+                                {
+                                    key: "id",
+                                    name: "credit",
+                                    fieldName: "credit_formatted",
+                                    minWidth: 0,
+                                },
+                            ]}
+                        ></DetailsList>
+                    )}
                 </StackItem>
             </Stack>
         </Stack>
