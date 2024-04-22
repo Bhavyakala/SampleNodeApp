@@ -1,7 +1,7 @@
 import cors from "cors";
 import express from "express";
 import milesData from "./Utils/miles.json" assert { type: "json" };
-import { createCustomer, createInvoice, getAccessToken, getAccountReceivables, getCustomerByName, getRecievablesSummary, markAsSentInvoice } from "./controllers/zohoController.js";
+import { createCustomer, createInvoice, getAccessToken, getAccountReceivables, getCustomerByName, getRecievablesSummary, getSalesAccount, markAsSentInvoice } from "./controllers/zohoController.js";
 const app = express();
 
 app.use(express.json());
@@ -65,7 +65,16 @@ app.get("/getRecievablesSummary", async (req, res) => {
     let authCode = req.query.authCode;
     let account_id = req.query.account_id;
     let access_token = await getAccessToken(authCode, authRedirectUriBase);
-    await getRecievablesSummary(account_id, "837904315", access_token).then((response)=> {
+    await getAccountReceivables(account_id, "837904315", access_token).then((response)=> {
+        res.send(response);
+    });
+});
+
+app.get("/getSalesAccount", async (req, res) => {
+    let authCode = req.query.authCode;
+    let account_id = req.query.account_id;
+    let access_token = await getAccessToken(authCode, authRedirectUriBase);
+    await getSalesAccount("837904315", access_token).then((response)=> {
         res.send(response);
     });
 });

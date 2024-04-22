@@ -111,15 +111,16 @@ export const App: React.FunctionComponent = () => {
                         onClick={async () => {
                             if (isAuthCode && authCode) {
                                 await axios
-                                    .get("http://localhost:3000/getRecievablesSummary", {
+                                    .get("http://localhost:3000/getSalesAccount", {
                                         params: {
-                                            account_id: "4692903000000000364",
+                                            // account_id: "4692903000000000364",
+                                            account_id: "4692903000000000388",
                                             authCode: authCode,
                                         },
                                     })
                                     .then((res) => {
                                         console.log(res.data);
-                                        setarData(res.data?.receivable_summary[0]?.receivable_summary_details);
+                                        setarData(res.data?.account_transactions[0]?.account_transactions);
                                     })
                                     .catch((error) => {
                                         console.log(error);
@@ -143,58 +144,40 @@ export const App: React.FunctionComponent = () => {
                             columns={[
                                 {
                                     key: "id",
-                                    name: "Name",
-                                    fieldName: "customer_name",
-                                    minWidth: 0,
-                                },
-                                {
-                                    key: "id",
-                                    name: "Date",
-                                    fieldName: "transaction_date",
-                                    minWidth: 0,
-                                },
-                                {
-                                    key: "id",
-                                    name: "transaction",
-                                    fieldName: "transaction_number",
-                                    minWidth: 0,
-                                },
-                                {
-                                    key: "id",
-                                    name: "status",
-                                    fieldName: "status",
-                                    minWidth: 0,
-                                },
-                                {
-                                    key: "id",
-                                    name: "Transaction Type",
-                                    fieldName: "transaction_type",
+                                    name: "Customer Name",
+                                    fieldName: "transaction_details",
                                     minWidth: 150,
                                 },
                                 {
                                     key: "id",
-                                    name: "Total (BCY)",
-                                    fieldName: "bcy_total",
+                                    name: "Date",
+                                    fieldName: "date",
                                     minWidth: 0,
                                 },
                                 {
                                     key: "id",
-                                    name: "Total (FCY)",
-                                    fieldName: "fcy_total",
+                                    name: "type",
+                                    fieldName: "transaction_type_formatted",
                                     minWidth: 0,
                                 },
                                 {
                                     key: "id",
-                                    name: "Balance (BCY)",
-                                    fieldName: "bcy_balance",
+                                    name: "debit",
+                                    fieldName: "debit",
                                     minWidth: 0,
                                 },
                                 {
                                     key: "id",
-                                    name: "Balance (FCY)",
-                                    fieldName: "fcy_balance",
-                                    minWidth: 0,
+                                    name: "credit",
+                                    fieldName: "credit",
+                                    minWidth: 0
                                 },
+                                {
+                                    key: "id",
+                                    name: "invoice",
+                                    fieldName: "entity_number",
+                                    minWidth: 0
+                                }
                             ]}
                         ></DetailsList>
                     )}

@@ -173,3 +173,25 @@ export const getRecievablesSummary = async (account_id, organization_id, access_
             console.log(error);
         });
 };
+
+export const getSalesAccount = async (organization_id, access_token) => {
+    let config = {
+        method: "get",
+        maxBodyLength: Infinity,
+        url: `https://books.zoho.com/api/v3/reports/accounttransaction?page=1&per_page=500&cash_based=false&from_date=2024-04-01&to_date=2024-04-30&group_by=%5B%7B%22field%22%3A%22none%22%2C%22group%22%3A%22report%22%7D%5D&rule=%7B%22columns%22%3A%5B%7B%22index%22%3A1%2C%22field%22%3A%22account_id%22%2C%22group%22%3A%22report%22%2C%22comparator%22%3A%22in%22%2C%22value%22%3A%5B%224692903000000000388%22%5D%7D%5D%2C%22criteria_string%22%3A%221%22%7D&show_sub_account=false&filter_by=TransactionDate.CustomDate&usestate=false&response_option=0&organization_id=${organization_id}`,
+        headers: {
+            Authorization: "Bearer " + access_token,
+            "content-type": "application/json",
+        }
+    };
+
+    return await axios
+        .request(config)
+        .then((response) => {
+            console.log(JSON.stringify(response.data));
+            return response.data;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
