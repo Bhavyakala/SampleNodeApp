@@ -145,10 +145,31 @@ export const getAccountReceivables = async (account_id, organization_id, access_
     return await axios
         .request(config)
         .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
+
+export const getRecievablesSummary = async (account_id, organization_id, access_token) => {
+    let config = {
+        method: "get",
+        maxBodyLength: Infinity,
+        url: `https://books.zoho.com/api/v3/reports/receivablesummary?usestate=true&organization_id=${organization_id}`,
+        headers: {
+            Authorization: "Bearer " + access_token,
+            "content-type": "application/json",
+        },
+    };
+
+    return await axios
+        .request(config)
+        .then((response) => {
             console.log(JSON.stringify(response.data));
             return response.data;
         })
         .catch((error) => {
             console.log(error);
         });
-}
+};

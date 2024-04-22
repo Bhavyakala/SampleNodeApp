@@ -111,7 +111,7 @@ export const App: React.FunctionComponent = () => {
                         onClick={async () => {
                             if (isAuthCode && authCode) {
                                 await axios
-                                    .get("http://localhost:3000/getAccountRecievables", {
+                                    .get("http://localhost:3000/getRecievablesSummary", {
                                         params: {
                                             account_id: "4692903000000000364",
                                             authCode: authCode,
@@ -119,7 +119,7 @@ export const App: React.FunctionComponent = () => {
                                     })
                                     .then((res) => {
                                         console.log(res.data);
-                                        setarData(res.data?.chart_of_account?.transactions);
+                                        setarData(res.data?.receivable_summary[0]?.receivable_summary_details);
                                     })
                                     .catch((error) => {
                                         console.log(error);
@@ -128,7 +128,7 @@ export const App: React.FunctionComponent = () => {
                                 return;
                             } else {
                                 let url =
-                                    "https://accounts.zoho.com/oauth/v2/auth?client_id=1000.A1EC3Q7JCFQ73T9Q3LGBMRURXGR25Y&response_type=code&redirect_uri=http://localhost:3001/&scope=ZohoBooks.invoices.CREATE,ZohoBooks.invoices.READ,ZohoBooks.invoices.UPDATE,ZohoBooks.invoices.DELETE,ZohoBooks.contacts.CREATE,ZohoBooks.contacts.READ,ZohoInvoice.contacts.READ,ZohoInvoice.contacts.CREATE,ZohoInvoice.invoices.CREATE,ZohoBooks.accountants.READ";
+                                    "https://accounts.zoho.com/oauth/v2/auth?client_id=1000.A1EC3Q7JCFQ73T9Q3LGBMRURXGR25Y&response_type=code&redirect_uri=http://localhost:3001/&scope=ZohoBooks.invoices.CREATE,ZohoBooks.invoices.READ,ZohoBooks.invoices.UPDATE,ZohoBooks.invoices.DELETE,ZohoBooks.contacts.CREATE,ZohoBooks.contacts.READ,ZohoInvoice.contacts.READ,ZohoInvoice.contacts.CREATE,ZohoInvoice.invoices.CREATE,ZohoBooks.accountants.READ,ZohoBooks.reports.READ";
                                 window.location.href = url;
                             }
                         }}
@@ -150,19 +150,49 @@ export const App: React.FunctionComponent = () => {
                                 {
                                     key: "id",
                                     name: "Date",
-                                    fieldName: "date_formatted",
+                                    fieldName: "transaction_date",
                                     minWidth: 0,
                                 },
                                 {
                                     key: "id",
-                                    name: "debit",
-                                    fieldName: "debit_formatted",
+                                    name: "transaction",
+                                    fieldName: "transaction_number",
                                     minWidth: 0,
                                 },
                                 {
                                     key: "id",
-                                    name: "credit",
-                                    fieldName: "credit_formatted",
+                                    name: "status",
+                                    fieldName: "status",
+                                    minWidth: 0,
+                                },
+                                {
+                                    key: "id",
+                                    name: "Transaction Type",
+                                    fieldName: "transaction_type",
+                                    minWidth: 150,
+                                },
+                                {
+                                    key: "id",
+                                    name: "Total (BCY)",
+                                    fieldName: "bcy_total",
+                                    minWidth: 0,
+                                },
+                                {
+                                    key: "id",
+                                    name: "Total (FCY)",
+                                    fieldName: "fcy_total",
+                                    minWidth: 0,
+                                },
+                                {
+                                    key: "id",
+                                    name: "Balance (BCY)",
+                                    fieldName: "bcy_balance",
+                                    minWidth: 0,
+                                },
+                                {
+                                    key: "id",
+                                    name: "Balance (FCY)",
+                                    fieldName: "fcy_balance",
                                     minWidth: 0,
                                 },
                             ]}
